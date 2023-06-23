@@ -1,0 +1,22 @@
+body{
+    background-color: rgb(135, 255, 197);
+}
+
+.footer{
+    background-color: rgb(107, 230, 170);
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+}
+
+#footerBtns a{
+    height: 7vh;
+    font-size: 2rem;
+    color: white;
+    text-decoration: none;
+}
+ /* .fab{
+    height: 100%;
+    display: inline-block;
+} */
