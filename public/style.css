@@ -55,6 +55,19 @@ body {
 .container {
   margin-bottom: 5rem;
 }
+.weatherIcon {
+  font-size: 5rem;
+  color: white;
+}
+#weatherApi {
+  display: flex;
+flex-direction: row-reverse;
+justify-content: space-between;
+background-color: #70ebaf;
+padding: 1rem;
+border: 1px solid #70ebaf;
+border-radius: 1rem;
+}
 
 @media (max-width: 600px) {
   #plantList {

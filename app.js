@@ -59,7 +59,7 @@ app.get("/get-all-plants", (req, res) => {
 
 //Routes
 app.get("/", (req, res) => {
-  res.render("home", { title: "Home" });
+    res.render("home", { title: "Home"});
 });
 app.get("/my-garden", (req, res) => {
   res.render("my-garden", { title: "My Garden" });

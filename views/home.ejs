@@ -1,14 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <%- include('./partials/head.ejs') %>
+
 <body>
     <div class="container">
+
         <%- include('./partials/navTempo.ejs') %>
         
         <h1>Welcome to <strong>Home</strong></h1>
+
+        <div id="weatherApi">
+            <div><i class="fa-solid fa-cloud-sun-rain weatherIcon"></i></div>
+
+        </div>
         
     </div>
+
     <%- include('./partials/footer.ejs') %>
+  
+
+    <script src="weather.js"></script>
+<script>
+  getWeather().then(function(weatherData) {
+    console.log(weatherData);
+    var weatherApiDiv = document.getElementById("weatherApi");
+    var weatherDataElement = document.createElement("p");
+    weatherDataElement.innerHTML = weatherData;
+    weatherApiDiv.appendChild(weatherDataElement);
+  });
+</script>
+
+    <script>
+// Wait for the DOM to load
+// document.addEventListener("DOMContentLoaded", function() {
+//     // API endpoint URL
+//     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=Tampere&appid=101bf08c85053ea9a3cf6d0d246c92f6";
+
+//     // Fetch the weather data from the API
+//     fetch(apiUrl)
+//         .then(function(response) {
+//             // Check if the API call was successful
+//             if (response.ok) {
+//                 console.log( response );
+//                 return response.json();
+               
+//             } else {
+//                 throw new Error("Error: " + response.status);
+//             }
+//         })
+//         .then(function(data) {
+//             console.log( data );
+//             // Extract the weather information you want to display
+//             var temperature = Math.round(data.main.temp-273.15);
+//             var description = data.weather[0].description;
+
+//             // Create the content to display
+//             var content = "Temperature: " + temperature + " C<br>";
+//             content += "Description: " + description;
+
+//             // Update the content of the <div> element with the fetched data
+//             document.getElementById("weatherApi").innerHTML = content;
+//         })
+//         .catch(function(error) {
+//             console.log(error);
+//         });
+// });
+
+    </script>
 </body>
 </html>
