@@ -1,13 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+  <%- include('./partials/head.ejs') %>
+  <body>
+    <div class="container">
 
-<%- include('./partials/head.ejs') %>
-<body>
-
-    
     <%- include('./partials/navTempo.ejs') %>
     <h1>Welcome to <strong>plants-list</strong></h1>
-    
+
+    <ul id="plantList">
+      <% result.forEach(element => { %>
+      <!-- card -->
+      
+      <div class="card">
+        <img class="ard-img-top" src="<%= element.img_url%>" alt="<%= element.common_name %>" />
+
+        <div class="card-body">
+          <h3 class="card-title"><strong>Common Name:</strong>  <%= element.common_name %></h3>
+          <p class="card-text">
+            Cientific Name: <%= element.cientific_name %>
+          </p>
+          <p class="card-text"><strong> Lighting: </strong><%= element.lighting %></p>
+          <p class="card-text"><strong>Description:</strong> <%= element.description %></p>
+          <p class="card-text">
+            <strong></strong><strong>Blooming Period:</strong> <%= element.blooming_period %>
+          </p>
+          <p class="card-text">
+            <strong></strong><strong>ID:</strong> <%= element._id %>
+          </p>
+          <a  href="/plant-details/<%= element._id %>" class="btn btn-primary cta">Plant Details</a>
+        </div>
+      </div>
+      <!-- card -->
+      <!-- <div id="plantCard">
+        <li>
+          <img src="<%= element.img_url%>" alt="<%= element.common_name %>" />
+        </li>
+        <li>Common Name: <%= element.common_name %></li>
+        <li>Cientific Name: <%= element.cientific_name %></li>
+        <li>Hardiness: <%= element.hardiness %></li>
+        <li>Lighting: <%= element.lighting %></li>
+        <li>Description: <%= element.description %></li>
+        <li>Blooming Period: <%= element.blooming_period %></li>
+      </div> -->
+      <hr />
+      <% }) %>
+    </ul>
+</div>
     <%- include('./partials/footer.ejs') %>
-</body>
+  </body>
 </html>

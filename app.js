@@ -1,7 +1,7 @@
 const express = require('express');
 const ejs = require('ejs');
 const mongoose = require('mongoose');
-const Plant = require('./models/plantSchema')
+const Plant = require('./models/plantSchema');
 
 
 const app = express();
@@ -23,7 +23,7 @@ app.use(express.json());
 // view engine
 app.set('view engine', 'ejs');
 
-//dummy route to save to db and display on get-all-plants page
+//dummy route to save to db and display on /get-all-plants page
 app.get('/get-all-plants', (req, res)=>{
     const plant = new Plant({
     common_name: "Summer Lilac",
@@ -48,13 +48,36 @@ app.get('/', (req, res)=>{
     res.render('home', { title: 'Home' });
 });
 
-app.get('/plant-details', (req, res)=>{
-    res.render('plant-details', { title: 'Plant Details' });
+app.get('/plant-details/:id', (req, res)=>{
+    const plantId = req.params.id;
+    Plant.findById(plantId)
+    .then((result) => {
+        if(result){
+            res.render('plant-details', { title: 'Plant Details', result, plantId });
+        }else{
+            // res.status(404).render('404', { title: '404' });
+        }
+    })
+    .catch((err) => {
+      console.log(err);
+      res.render('error', { title: 'Error' }); // Render the error page
+    });
 });
 
 app.get('/plants-list', (req, res)=>{
-    res.render('plants-list', { title: 'Plants List' });
+    Plant.find()
+    .then((result)=>{
+            res.render('plants-list', { title: 'Plants List', result });//
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
 });
+
+
+
+
+
 
 // 404 page
 app.use((req, res)=>{

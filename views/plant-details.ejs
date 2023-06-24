@@ -3,10 +3,35 @@
 
 <%- include('./partials/head.ejs') %>
 <body>
-    <%- include('./partials/navTempo.ejs') %>
+    <div class="container">
 
-    <h1>Welcome to <strong>plant-details</strong></h1>
+        <%- include('./partials/navTempo.ejs') %>
+    
+        <h1><strong><%= result.common_name %></strong></h1>
+    
+          <!-- card -->
+      
+      <div class="card">
+        <img class="ard-img-top" src="<%= result.img_url%>" alt="<%= result.common_name %>" />
 
+        <div class="card-body">
+          <h3 class="card-title"><strong>Common Name:</strong>  <%= result.common_name %></h3>
+          <p class="card-text">
+            Cientific Name: <%= result.cientific_name %>
+          </p>
+          <p class="card-text"><strong> Lighting: </strong><%= result.lighting %></p>
+          <p class="card-text"><strong>Description:</strong> <%= result.description %></p>
+          <p class="card-text">
+            <strong></strong><strong>Blooming Period:</strong> <%= result.blooming_period %>
+          </p>
+          <p class="card-text">
+            <strong></strong><strong>ID:</strong> <%= result._id %>
+          </p>
+          <a  href="#" class="btn btn-primary cta">Add To My Garden</a>
+        </div>
+      </div>
+      <!-- card -->
+    </div>
     <%- include('./partials/footer.ejs') %>
 </body>
 </html>
