@@ -56,6 +56,7 @@ app.get('/plants-list', (req, res)=>{
     res.render('plants-list', { title: 'Plants List' });
 });
 
-app.get('/404', (req, res)=>{
-    res.render('404', { title: '404' });
+// 404 page
+app.use((req, res)=>{
+    res.status(404).render('404', { title: '404' });
 });
