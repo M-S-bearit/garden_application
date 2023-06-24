@@ -1,5 +1,6 @@
 const express = require("express");
 const ejs = require("ejs");
+const cors = require("cors");
 const mongoose = require("mongoose");
 const Plant = require("./models/plantSchema");
 require('dotenv').config();
@@ -26,6 +27,9 @@ mongoose
 // middleware
 app.use(express.static("public"));
 app.use(express.json());
+//To allow cross-origin requests
+app.use(cors());
+
 
 // view engine
 app.set("view engine", "ejs");
@@ -56,6 +60,9 @@ app.get("/get-all-plants", (req, res) => {
 //Routes
 app.get("/", (req, res) => {
   res.render("home", { title: "Home" });
+});
+app.get("/my-garden", (req, res) => {
+  res.render("my-garden", { title: "My Garden" });
 });
 
 app.get("/plant-details/:id", (req, res) => {
@@ -88,7 +95,7 @@ app.get("/plants-list", (req, res) => {
     });
 });
 
-// 404 page
+// throw 404 if URL not found
 app.use((req, res) => {
   res.status(404).render("404", { title: "404" });
 });
